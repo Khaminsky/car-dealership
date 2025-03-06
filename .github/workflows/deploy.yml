@@ -34,10 +34,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Create SSH directory
+        run: mkdir -p ~/.ssh
+  
+      - name: Add Host to Known Hosts
+        run: ssh-keyscan 165.227.81.39 >> ~/.ssh/known_hosts
+  
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+  
+      - name: Set Correct Permissions
+        run: chmod 600 ~/.ssh/known_hosts
 
       - name: Deploy to DigitalOcean
         run: |
