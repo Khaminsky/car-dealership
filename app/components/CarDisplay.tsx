@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback} from "react"
 import Image from "next/image"
 import { Filter } from "lucide-react"
 
-import { Car, Filters } from "@/lib/utils"
+import { Filters } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -259,27 +259,27 @@ const toggleFuelType = useCallback((fuelType: string) => {
 }, []);
 
 // Update engine capacity filter
-const updateEngineCapacity = useCallback((value: any) => {
+const updateEngineCapacity = useCallback((value?: number) => { 
   setFilters((prev) => ({
     ...prev,
     engineCapacity: value,
   }));
 }, []);
 
-// Update mileage filter
-const updateMileage = useCallback((value: any) => {
+const updateMileage = useCallback((value?: number) => { 
   setFilters((prev) => ({
     ...prev,
     mileage: value,
   }));
 }, []);
+
   // Reset all filters
   const resetFilters = () => {
     setFilters({
       brands: [],
       years: [],
-      engineCapacity: [0, 5],
-      mileage: [0, 100000],
+      engineCapacity: [0, 6],
+      mileage: [0, 200000],
       transmissions: [],
       fuelTypes: [],
     })
@@ -377,7 +377,7 @@ const updateMileage = useCallback((value: any) => {
                 max={100000}
                 step={1000}
                 value={filters.mileage}
-                onValueChange={updateMileage}
+                onValueChange={(value) => updateMileage(value)}
               />
               <div className="flex justify-between mt-2 text-sm">
                 <span>{filters.mileage[0].toLocaleString()}</span>

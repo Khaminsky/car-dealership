@@ -18,7 +18,7 @@ export default function Landing() {
             </h1>
   
             <p className="mt-4 max-w-lg text-white sm:text-xl/relaxed">
-              Discover a wide selection of new and used cars that fit your lifestyle. Whether you're looking for a family car, sports car, or something in between, we have something for you!
+              Discover a wide selection of new and used cars that fit your lifestyle. Whether you&apos;re looking for a family car, sports car, or something in between, we have something for you!
             </p>
   
             <div className="mt-8 flex flex-wrap gap-4 text-center">

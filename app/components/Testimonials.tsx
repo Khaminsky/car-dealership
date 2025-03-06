@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 // Mock testimonial data
 const testimonials = [
@@ -70,7 +71,7 @@ export default function TestimonialsSlider() {
                 <Quote className="w-10 h-10 text-rose-600 mb-4" />
                 <p className="text-card-foreground mb-4 flex-grow">{testimonial.content}</p>
                 <div className="flex items-center">
-                  <img
+                  <Image
                     src={testimonial.avatar || "/placeholder.svg"}
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full border-2 border-rose-600 mr-4"
