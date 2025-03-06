@@ -74,6 +74,8 @@ export default function TestimonialsSlider() {
                   <Image
                     src={testimonial.avatar || "/placeholder.svg"}
                     alt={testimonial.name}
+                    width={100} // Set width explicitly
+                    height={100}
                     className="w-12 h-12 rounded-full border-2 border-rose-600 mr-4"
                   />
                   <div>
