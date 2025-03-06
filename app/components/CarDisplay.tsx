@@ -259,19 +259,20 @@ const toggleFuelType = useCallback((fuelType: string) => {
 }, []);
 
 // Update engine capacity filter
-const updateEngineCapacity = useCallback((value?: number) => { 
+const updateEngineCapacity = useCallback((value: [number, number]) => { 
   setFilters((prev) => ({
     ...prev,
-    engineCapacity: value,
+    engineCapacity: value, // Ensure it's always an array
   }));
 }, []);
 
-const updateMileage = useCallback((value?: number) => { 
+const updateMileage = useCallback((value: [number, number]) => { 
   setFilters((prev) => ({
     ...prev,
-    mileage: value,
+    mileage: value, // Ensure it's always an array
   }));
 }, []);
+
 
   // Reset all filters
   const resetFilters = () => {
@@ -351,14 +352,14 @@ const updateMileage = useCallback((value?: number) => {
           <AccordionTrigger>Engine Capacity (L)</AccordionTrigger>
           <AccordionContent>
             <div className="px-2 pt-2 pb-6">
-              <Slider
-                defaultValue={[0, 5]}
-                min={0}
-                max={5}
-                step={0.1}
-                value={filters.engineCapacity}
-                onValueChange={updateEngineCapacity}
-              />
+            <Slider
+              defaultValue={[0, 5]}
+              min={0}
+              max={5}
+              step={0.1}
+              value={filters.engineCapacity}
+              onValueChange={updateEngineCapacity} // Ensure value is always [number, number]
+            />
               <div className="flex justify-between mt-2 text-sm">
                 <span>{filters.engineCapacity[0]}L</span>
                 <span>{filters.engineCapacity[1]}L</span>
@@ -371,14 +372,14 @@ const updateMileage = useCallback((value?: number) => {
           <AccordionTrigger>Mileage (km)</AccordionTrigger>
           <AccordionContent>
             <div className="px-2 pt-2 pb-6">
-              <Slider
-                defaultValue={[0, 100000]}
-                min={0}
-                max={100000}
-                step={1000}
-                value={filters.mileage}
-                onValueChange={(value) => updateMileage(value)}
-              />
+            <Slider
+              defaultValue={[0, 100000]}
+              min={0}
+              max={100000}
+              step={1000}
+              value={filters.mileage}
+              onValueChange={updateMileage} // Ensure value is always [number, number]
+            />
               <div className="flex justify-between mt-2 text-sm">
                 <span>{filters.mileage[0].toLocaleString()}</span>
                 <span>{filters.mileage[1].toLocaleString()}</span>
