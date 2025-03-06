@@ -57,7 +57,7 @@ jobs:
 
     - name: Deploy to DigitalOcean
       run: |
-        ssh root@165.227.81.39 << 'EOF'
+        ssh minsky@165.227.81.39 << 'EOF'
           docker load -i /tmp/cardealer-app.tar
           docker stop cardealer-app-container || true
           docker run -d --name cardealer-app-container -p 3000:3000 cardealer-app
