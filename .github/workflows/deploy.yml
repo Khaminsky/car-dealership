@@ -50,7 +50,7 @@ jobs:
 
       - name: Deploy to DigitalOcean
         run: |
-          ssh minsky@165.227.81.39 << 'EOF'
+          ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=60 minsky@165.227.81.39 << 'EOF'
             cd ~/www/var/html/car-dealership
             docker build -t cardealer-app .
             docker stop cardealer-app-container || true
